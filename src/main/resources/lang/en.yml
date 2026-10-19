@@ -1,0 +1,155 @@
+# ==========================================================
+#  Sell  -  lang/en.yml
+#  EVERY text of the plugin lives here (chat, GUI names, GUI lore).
+#  gui_layout/*.yml only decides WHERE things are, and points at the keys below.
+#  Colors: &a &c ... (legacy). Placeholders look like <total>.
+# ==========================================================
+
+prefix: "&8[&aSell&8] &7"
+
+# ----------------------------------------------------------- general
+no_permission: "&cYou do not have permission."
+players_only: "&cOnly players can use this command."
+no_economy: "&cNo economy found. Install Vault and an economy plugin."
+hold_item: "&cHold an item in your main hand."
+nothing_to_sell: "&cNothing to sell. This item has no worth (or is protected)."
+payout_failed: "&cThe economy refused the payment, nothing was sold."
+unsellable_returned: "&7<count> item(s) that can not be sold were given back to you."
+reload_done: "&aReloaded. &7Loaded &f<items> &7item prices, &f<enchants> &7enchant prices (&f<invalid> &7unknown names skipped)."
+
+# ----------------------------------------------------------- chat summary after selling
+# Placeholders: <total> <count> <types> <multiplier>
+# The line "<items>" is replaced by one sell_item_line per sold item type.
+sell_message:
+  - "&8&m                                        "
+  - "&a&lSOLD &7- you sold:"
+  - "<items>"
+  - "&7Total: &a$<total> &8(&7x<multiplier> multiplier&8)"
+  - "&8&m                                        "
+# Placeholders: <item> <amount> <worth>
+sell_item_line: "&7 &8• &f<amount>x <item> &8- &a$<worth>"
+# Placeholder: <more>
+sell_more_line: "&7 &8• &7...and &f<more> &7more item types"
+
+# ----------------------------------------------------------- /worth hand (chat)
+# Placeholders: <item> <amount> <unit_worth> <stack_worth> <multiplier>
+worth_message:
+  - "&8&m                                        "
+  - "&a&lWORTH &7- &f<item>"
+  - "&7Each: &a$<unit_worth>"
+  - "&7Stack (<amount>x): &a$<stack_worth>"
+  - "&7Your multiplier: &fx<multiplier>"
+  - "&8&m                                        "
+# Held shulker box with items inside. Placeholders: <item> <contents_count> <contents_worth> <multiplier>
+worth_shulker_message:
+  - "&8&m                                        "
+  - "&a&lWORTH &7- &f<item> &7(contents)"
+  - "&7Sellable items inside: &f<contents_count>"
+  - "&7Total worth: &a$<contents_worth>"
+  - "&7Your multiplier: &fx<multiplier>"
+  - "&8&m                                        "
+worth_no_worth:
+  - "&c<item> &7can not be sold."
+
+# ----------------------------------------------------------- effects after selling
+# Placeholders: <total> <count>
+effects:
+  actionbar: "&a+$<total> &7(sold <count> items)"
+  title: "&a+$<total>"
+  subtitle: "&7Sold <count> items"
+
+# ----------------------------------------------------------- /editsell
+editsell_usage:
+  - "&cUsage:"
+  - "&7/editsell <Type> <add|modify|remove> <Item> <price>"
+  - "&7/editsell <Type> <add|modify|remove> <ENCHANT> <level> <price>"
+  - "&7/editsell <Type> <add|modify|remove> <POTION_ITEM>:<POTION_TYPE> <price>"
+  - "&7Types: &f<types>"
+  - "&7Tip: use &fHAND &7as the item to use the item you are holding."
+editsell_unknown_type: "&cUnknown type &f<type>&c. Available: &f<types>"
+editsell_unknown_item: "&c<item> is not a valid item or enchantment."
+editsell_unknown_potion: "&c<potion> is not a valid potion type."
+editsell_bad_number: "&c<value> is not a valid number."
+editsell_item_added: "&aSet &f<item> &ato &f$<price> &7in &f<type>.yml"
+editsell_item_modified: "&aModified &f<item> &ato &f$<price> &7in &f<type>.yml"
+editsell_item_removed: "&aRemoved &f<item> &7from &f<type>.yml"
+editsell_ench_added: "&aSet &f<item> <level> &ato &f$<price> &7in &f<type>.yml"
+editsell_ench_modified: "&aModified &f<item> <level> &ato &f$<price> &7in &f<type>.yml"
+editsell_ench_removed: "&aRemoved &f<item> &7(<level>) from &f<type>.yml"
+editsell_potion_added: "&aSet &f<item> &ato &f$<price> &7in &f<type>.yml"
+editsell_potion_modified: "&aModified &f<item> &ato &f$<price> &7in &f<type>.yml"
+editsell_potion_removed: "&aRemoved &f<item> &7from &f<type>.yml"
+editsell_not_found: "&c<item> has no price yet. Use &fadd &cinstead."
+editsell_nothing_to_remove: "&c<item> is not in <type>.yml"
+editsell_save_failed: "&cCould not save the price file, see console."
+
+# ----------------------------------------------------------- GUI texts
+# gui_layout/sell.yml and gui_layout/worth.yml point at these keys (name: / lore:)
+gui:
+  filler: " "
+
+  sell:
+    title: "&8Sell Menu"
+    # Placeholders: <total> <count> <multiplier> <unsellable>
+    sell_button:
+      name: "&aSell"
+      lore:
+        - "&7Worth: &a$<total>"
+
+  worth:
+    title: "&8Item Prices"
+    # Placeholders: <page> <pages>
+    previous:
+      name: "&aPrevious Page"
+      lore:
+        - "&7Page &f<page>&7/&f<pages>"
+    next:
+      name: "&aNext Page"
+      lore:
+        - "&7Page &f<page>&7/&f<pages>"
+    # Placeholder: <category>
+    category:
+      name: "&eCategory"
+      lore:
+        - "&7Showing: &f<category>"
+        - ""
+        - "&8Left click: next category"
+        - "&8Right click: previous category"
+    # Placeholder: <sort>
+    sort:
+      name: "&eSort"
+      lore:
+        - "&7Sorted by: &f<sort>"
+        - ""
+        - "&8Left click: next order"
+        - "&8Right click: previous order"
+    # Placeholder: <query>
+    search:
+      name: "&eSearch"
+      lore:
+        - "&7Searching for: &f<query>"
+        - ""
+        - "&8Left click: type a search"
+        - "&8Right click: clear the search"
+    close:
+      name: "&cClose"
+      lore: []
+    # Lore added to every price icon. Placeholders: <worth> <stack> <stack_worth> <multiplier>
+    entry_lore:
+      - ""
+      - "&7Worth: &a$<worth>"
+      - "&7Stack (<stack>x): &a$<stack_worth>"
+    search_none: "nothing"
+    category_all: "All"
+    sort_modes:
+      name: "Name (A-Z)"
+      price_high: "Price (high to low)"
+      price_low: "Price (low to high)"
+
+# ----------------------------------------------------------- search text box (Paper dialog)
+dialog:
+  search:
+    title: "Search prices"
+    label: "Item name"
+    confirm: "Search"
+    cancel: "Cancel"

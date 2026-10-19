@@ -1,0 +1,57 @@
+# ==========================================================
+#  gui_layout/worth.yml  -  layout of the /worth price list
+#  This file only says WHERE things are. All texts are in lang/en.yml:
+#  `title`, `name` and `lore` are keys of lang/en.yml.
+#
+#  Slots are numbered 0.. from the top-left (row 1 = 0-8, row 2 = 9-17 ...).
+#  A slot list can be "0-44", "45,46,47" or "0-8,45-53".
+#  action: NONE | PREVIOUS_PAGE | NEXT_PAGE | CATEGORY | SORT | SEARCH | CLOSE
+# ==========================================================
+rows: 6
+title: "gui.worth.title"
+
+# Slots that show the priced items (one page = this many items)
+content_slots: "0-44"
+
+buttons:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slots: "46,50,52"
+    name: "gui.filler"
+    action: NONE
+  previous:
+    material: ARROW
+    slots: "45"
+    name: "gui.worth.previous.name"
+    lore: "gui.worth.previous.lore"
+    action: PREVIOUS_PAGE
+  category:
+    material: COMPASS
+    slots: "47"
+    name: "gui.worth.category.name"
+    lore: "gui.worth.category.lore"
+    action: CATEGORY
+  search:
+    material: SPYGLASS
+    slots: "48"
+    name: "gui.worth.search.name"
+    lore: "gui.worth.search.lore"
+    action: SEARCH
+  close:
+    material: BARRIER
+    slots: "49"
+    name: "gui.worth.close.name"
+    lore: "gui.worth.close.lore"
+    action: CLOSE
+  sort:
+    material: HOPPER
+    slots: "51"
+    name: "gui.worth.sort.name"
+    lore: "gui.worth.sort.lore"
+    action: SORT
+  next:
+    material: ARROW
+    slots: "53"
+    name: "gui.worth.next.name"
+    lore: "gui.worth.next.lore"
+    action: NEXT_PAGE

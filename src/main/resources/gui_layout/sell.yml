@@ -1,0 +1,33 @@
+# ==========================================================
+#  gui_layout/sell.yml  -  layout of the /sell menu (6 rows)
+#  This file only says WHERE things are. All texts are in lang/en.yml:
+#  `title`, `name` and `lore` are keys of lang/en.yml.
+#
+#  Slots are numbered 0.. from the top-left (row 1 = 0-8, row 2 = 9-17 ... row 6 = 45-53).
+#  A slot list can be "0-44", "45,46,47" or "0-8,45-53".
+#  action: NONE | SELL | CLOSE
+# ==========================================================
+rows: 6
+title: "gui.sell.title"
+
+# true  = items are sold when the menu is closed (DonutSMP style), the SELL button just closes it
+# false = closing the menu gives the items back, only the SELL button sells
+sell_on_close: true
+
+# Slots where players can put items. Every other slot is locked.
+content_slots: "0-44"
+
+buttons:
+  # whole bottom row: light gray glass pane
+  filler:
+    material: LIGHT_GRAY_STAINED_GLASS_PANE
+    slots: "45-52"
+    name: "gui.filler"
+    action: NONE
+  # bottom right corner: lime glass pane, name "Sell", lore "Worth: <total>"
+  sell:
+    material: LIME_STAINED_GLASS_PANE
+    slots: "53"
+    name: "gui.sell.sell_button.name"
+    lore: "gui.sell.sell_button.lore"
+    action: SELL

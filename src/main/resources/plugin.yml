@@ -1,0 +1,34 @@
+name: Sell
+version: '${version}'
+main: com.paismp.sell.SellPlugin
+api-version: '1.21'
+description: DonutSMP-style /sell menu, /worth price list and /editsell
+authors: [PaiSMP]
+softdepend: [Vault]
+
+commands:
+  sell:
+    description: Open the sell menu
+    usage: /sell [reload]
+  worth:
+    description: Open the item price list
+    usage: /worth [hand|search <text>]
+  editsell:
+    description: Edit item prices in-game
+    usage: /editsell <Type> <add|modify|remove> <Item> [level] [price]
+
+permissions:
+  sell.sell:
+    description: Use /sell
+    default: true
+  sell.worth:
+    description: Use /worth
+    default: true
+  sell.reload:
+    description: Use /sell reload
+    default: op
+  sell.admin:
+    description: Use /editsell and manage the system
+    default: op
+    children:
+      sell.reload: true

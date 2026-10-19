@@ -1,0 +1,64 @@
+# ==========================================================
+#  Sell  -  config.yml
+#  Texts are NOT here, they are in lang/<language>.yml
+#  GUI positions are NOT here, they are in gui_layout/*.yml
+# ==========================================================
+language: en            # file in lang/<language>.yml (falls back to the built-in en)
+number_format: "#,##0.##"
+
+economy:
+  use_vault: true       # money is paid through Vault (needs Vault + an economy plugin)
+
+formula:
+  # FLOOR = always round down, ROUND = normal rounding, CEIL = round up
+  # Applied to the final worth of each stack (after multiplier): 159.2 -> 159, 35.9 -> 35
+  round_type: "FLOOR"
+
+  # Damaged tools / armor are worth less
+  durability:
+    enable: true
+    # REMAINING_RATIO = (MaxDurability - Damage) / MaxDurability
+    # NONE            = ignore durability
+    multiplier_mode: "REMAINING_RATIO"
+
+  # Enchantment prices (price/*.yml -> enchantments:) are added on top of the base price
+  enchantments:
+    enable: true
+    default_multiplier: 1.0
+
+chat:
+  max_items_shown: 10   # item types listed in the chat summary of /sell hand
+
+# Effects after a successful sale (their texts are in lang/en.yml -> effects)
+effects:
+  sound:
+    enable: true
+    name: "ENTITY_EXPERIENCE_ORB_PICKUP"   # ENTITY_EXPERIENCE_ORB_PICKUP or entity.experience_orb.pickup
+    volume: 1.0
+    pitch: 1.2
+  actionbar:
+    enable: true
+  title:
+    enable: false
+
+# Anti-exploit: items matching these are NEVER sold
+anti_exploit:
+  block_custom_model_data: true
+  block_persistent_data: true      # any item carrying custom plugin data (PDC/NBT) is refused
+  block_custom_name: false         # set true to refuse every renamed item
+  blacklist_materials: []          # example: [ELYTRA, TRIDENT]
+  # Explicit protection that keeps working even if block_persistent_data is set to false.
+  # Items carrying one of these PDC keys, or any key in one of these namespaces, are never sold.
+  # (AmethystTools: namespace = plugin name in lower case)
+  protected_keys:
+    - "amethysttools:amethyst_pickaxe"
+    - "amethysttools:amethyst_axe"
+    - "amethysttools:amethyst_shovel"
+    - "amethysttools:amethyst_hoe"
+    - "amethysttools:expires_at"
+  protected_namespaces:
+    - "amethysttools"
+
+# Removes the "Worth" lore that versions <= 1.3.0 left on items in player inventories
+# (that lore is what stopped those items from stacking). Runs on join and on enable.
+legacy_lore_cleanup: true
